@@ -1,0 +1,65 @@
+<div class="card work-card" id="work_card">
+    <img src="src/imgs/card_images/card_img.jpg" alt="" />
+    <div class="container titles-container">
+        <h3 class="title" id="title">Something</h3>
+        <p class="subtitle" id="subtitle">Something</p>
+    </div>
+</div>
+
+<div class="card work-card" id="work_card">
+    <img src="src/imgs/card_images/card_img.jpg" alt="" />
+    <div class="container titles-container">
+        <h3 class="title" id="title">Something</h3>
+        <p class="subtitle" id="subtitle">Something</p>
+    </div>
+</div>
+
+<div class="card work-card" id="work_card">
+    <img src="src/imgs/card_images/card_img.jpg" alt="" />
+    <div class="container titles-container">
+        <h3 class="title" id="title">Something</h3>
+        <p class="subtitle" id="subtitle">Something</p>
+    </div>
+</div>
+
+<style>
+    .card.work-card {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        min-height: 300px;
+    }
+
+    .card.work-card .container.titles-container {
+        margin-top: 10px;
+    }
+
+    .card.work-card .container.titles-container p.subtitle {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .card.work-card {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: start;
+            gap: 40px;
+            height: 400px;
+            width: 100vw;
+            border: 2px solid #333;
+        }
+
+        .card.work-card img {
+            flex-basis: 50%;
+            object-fit: cover;
+            height: 100%;
+        }
+
+        .card.work-card .container.titles-container {
+            flex-basis: 50%;
+            text-align: right;
+        }
+    }
+</style>
