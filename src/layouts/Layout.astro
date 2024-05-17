@@ -1,24 +1,21 @@
 ---
-import Hero from '../components/Hero.astro'
-import '../css/style.css';
+import Hero from "../components/Hero.astro";
+import CardsContainer from "../components/CardsContainer.astro";
+import "../css/style.css";
 
-const {title} = Astro.props
+const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
-</head>
-<>
-  <Hero/>
-    <div>
-        Hello
-    </div>
-    <div>
-        Guten Tag!
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <Hero />
+        <CardsContainer />
+        <div>Guten Tag!</div>
+    </body>
 </html>
