@@ -1,25 +1,40 @@
-<div class="card work-card" id="work_card">
-    <img src="src/imgs/card_images/card_img.jpg" alt="" />
-    <div class="container titles-container">
-        <h3 class="title" id="title">Something</h3>
-        <p class="subtitle" id="subtitle">Something</p>
-    </div>
-</div>
+---
+const cardImages = [
+    "src/imgs/card_images/hero_bg.jpg",
+    "src/imgs/card_images/hero_bg.jpg",
+    "src/imgs/card_images/hero_bg.jpg",
+    "src/imgs/card_images/hero_bg.jpg",
+];
 
-<div class="card work-card" id="work_card">
-    <img src="src/imgs/card_images/card_img.jpg" alt="" />
-    <div class="container titles-container">
-        <h3 class="title" id="title">Something</h3>
-        <p class="subtitle" id="subtitle">Something</p>
-    </div>
-</div>
+const titles = ["Title 1", "Title 2", "Title 3", "Title 4"];
+const subtitle = ["Subtitle 1", "Subtitle 2", "Subtitle 3", "Subtitle 4"];
 
-<div class="card work-card" id="work_card">
-    <img src="src/imgs/card_images/card_img.jpg" alt="" />
-    <div class="container titles-container">
-        <h3 class="title" id="title">Something</h3>
-        <p class="subtitle" id="subtitle">Something</p>
-    </div>
+const workCards = titles.map((titles, index) => ({
+    workCardImage: cardImages[index],
+    workCardTitle: titles,
+    workCardSubtitle: subtitle[index],
+}));
+---
+
+<div class="container work-cards-container">
+    {
+        workCards.map((workCard) => (
+            <div class="card work-card" id="work_card">
+                <img
+                    src={workCard.workCardImage}
+                    alt={workCard.workCardImage}
+                />
+                <div class="container titles-container">
+                    <h3 class="title" id="title">
+                        {workCard.workCardTitle}
+                    </h3>
+                    <p class="subtitle" id="subtitle">
+                        {workCard.workCardSubtitle}
+                    </p>
+                </div>
+            </div>
+        ))
+    }
 </div>
 
 <style>
@@ -28,6 +43,15 @@
         flex-direction: column;
         width: 300px;
         min-height: 300px;
+    }
+
+    .card.work-card:nth-child(odd) .container.titles-container {
+        order: 1;
+        text-align: left;
+    }
+
+    .card.work-card img {
+        height: 100%;
     }
 
     .card.work-card .container.titles-container {
@@ -48,7 +72,6 @@
             gap: 40px;
             height: 400px;
             width: 100vw;
-            border: 2px solid #333;
         }
 
         .card.work-card img {
@@ -60,6 +83,10 @@
         .card.work-card .container.titles-container {
             flex-basis: 50%;
             text-align: right;
+        }
+        .card.work-card:nth-child(odd) .container.titles-container {
+            order: -1;
+            text-align: left;
         }
     }
 </style>
