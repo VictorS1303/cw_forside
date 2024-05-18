@@ -1,4 +1,6 @@
 ---
+import WorkCardButton from './WorkCardButton.astro'
+
 const cardImages = [
     "src/imgs/card_images/hero_bg.jpg",
     "src/imgs/card_images/hero_bg.jpg",
@@ -6,19 +8,27 @@ const cardImages = [
     "src/imgs/card_images/hero_bg.jpg",
 ];
 
-const titles = ["Title 1", "Title 2", "Title 3", "Title 4"];
-const subtitle = ["Subtitle 1", "Subtitle 2", "Subtitle 3", "Subtitle 4"];
+const cardMiniatureImages = [
+    "src/imgs/card_images/hero_bg.jpg",
+    "src/imgs/card_images/hero_bg.jpg",
+    "src/imgs/card_images/hero_bg.jpg",
+    "src/imgs/card_images/hero_bg.jpg",
+];
 
-const workCards = titles.map((titles, index) => ({
+const titles = ["Mixedmedia", "Life Circles", "Title 3", "About"];
+const subtitles = ["Collage", "2014", "Subtitle 3", "Hey"];
+
+const workCards = titles.map((title, index) => ({
     workCardImage: cardImages[index],
-    workCardTitle: titles,
-    workCardSubtitle: subtitle[index],
-}));
+    cardMiniatureImage: cardMiniatureImages[index],
+    workCardTitle: title,
+    workCardSubtitle: subtitles[index], 
+}))
 ---
 
 <div class="container work-cards-container">
     {
-        workCards.map((workCard) => (
+        workCards.map((workCard, index) => (
             <div class="card work-card" id="work_card">
                 <img
                     src={workCard.workCardImage}
@@ -31,6 +41,19 @@ const workCards = titles.map((titles, index) => ({
                     <p class="subtitle" id="subtitle">
                         {workCard.workCardSubtitle}
                     </p>
+
+
+                    <div class="second-subtitle-and-button-container">
+                        {index % 4 === 3 && (
+                        <div class="second-subtitle-and-button-container">
+                            <p>
+                                Hey
+                            </p>
+
+                            <WorkCardButton workCardButtonText="Link"/>
+                        </div>
+                    )}
+                    </div>
                 </div>
             </div>
         ))
@@ -38,6 +61,12 @@ const workCards = titles.map((titles, index) => ({
 </div>
 
 <style>
+
+    .second-subtitle-and-button-container
+    {
+        display: flex;
+        flex-direction: column;
+    }
     .card.work-card {
         display: flex;
         flex-direction: column;
@@ -63,7 +92,17 @@ const workCards = titles.map((titles, index) => ({
         margin-top: 5px;
     }
 
+    .second-subtitle-and-button-container
+    {
+        margin: 20px 0;
+    }
+
     @media screen and (min-width: 768px) {
+        .second-subtitle-and-button-container
+        {
+            align-items: end;
+        }
+
         .card.work-card {
             display: flex;
             flex-direction: row;
@@ -87,6 +126,11 @@ const workCards = titles.map((titles, index) => ({
         .card.work-card:nth-child(odd) .container.titles-container {
             order: -1;
             text-align: left;
+        }
+
+        .titles-container
+        {
+            padding: 20px 30px;
         }
     }
 </style>
